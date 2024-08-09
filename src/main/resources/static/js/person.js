@@ -14,3 +14,39 @@ async function getPerson(){
         document.getElementById('result').innerText = `Error: ${error.message}`;
     }
 }
+async function createPerson() {
+    const url = 'http://localhost:8090/api/createPerson';
+
+    // Get values from input fields
+    const firstname = document.getElementById("firstnameInput").value;
+    const lastname = document.getElementById("lastnameInput").value;
+    const identificationNumber = parseInt(document.getElementById("nroIdentificationInput").value);
+
+    // Create data object
+    const data = {
+        firstname: firstname,
+        lastname: lastname,
+        identificationNumber: identificationNumber
+    };
+
+    try {
+        // Send POST request
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify(data) 
+        });
+
+        // Check if response is successful
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json(); 
+        alert('Success: ' + JSON.stringify(result, null, 2)); 
+    } catch (error) {
+        alert('Error: ' + error.message); 
+    }
+}

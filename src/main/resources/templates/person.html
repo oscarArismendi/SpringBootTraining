@@ -7,6 +7,15 @@
     <script src="/js/person.js" defer></script>
 </head>
 <body>
+    <form onsubmit="event.preventDefault(); createPerson();" id="createPerson">
+        <label for="firstnameInput">Input your firstname</label>
+        <input type="text" id="firstnameInput" required>
+        <label for="lastnameInput">Input your lastname</label>
+        <input type="text" id="lastnameInput" required>
+        <label for="nroIdentificationInput">Input your identification number</label>
+        <input type="text" id="nroIdentificationInput" required>
+        <button type="submit">Register person</button>
+    </form>
     <form onsubmit="event.preventDefault(); getPerson();" id="formSearchPerson">
         <label for="nroIdentification">Input your identification number</label>
         <input type="text" id="nroIdentification" required>
